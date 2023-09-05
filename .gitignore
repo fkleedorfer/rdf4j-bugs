@@ -1,0 +1,4 @@
+# Project exclude paths
+/4769-memorystore-snapshots/target/
+/**/target
+/**/.idea
