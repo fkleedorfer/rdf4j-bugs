@@ -1,0 +1,1065 @@
+@prefix :             <https://example.com/test#> .
+@prefix mms:          <https://mms.researchstudio.at/mms#> .
+@prefix rdf:          <http://www.w3.org/1999/02/22_rdf_syntax_ns#> .
+@prefix owl:          <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:         <http://www.w3.org/2000/01/rdf_schema#> .
+@prefix dtype:        <http://www.linkedmodel.org/schema/dtype#> .
+@prefix dc:           <http://purl.org/dc/elements/1.1/> .
+@prefix fno:          <https://w3id.org/function/ontology#> .
+@prefix xsd:          <http://www.w3.org/2001/XMLSchema#> .
+@prefix qudt:         <http://qudt.org/schema/qudt/> .
+@prefix dcterms:      <http://purl.org/dc/terms/> .
+@prefix vann:         <http://purl.org/vocab/vann/> .
+@prefix s:            <http://schema.org/> .
+@prefix skos:         <http://www.w3.org/2004/02/skos/core#> .
+@prefix unit:         <http://qudt.org/vocab/unit/> .
+@prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
+@prefix vaem:         <http://www.linkedmodel.org/schema/vaem#> .
+@prefix mms-ifc:      <https://mms.researchstudio.at/mms-ifc#> .
+
+:orgA
+    a              mms:Organization ;
+    s:name         "Test Organization A" ;
+    dc:description "Some test organization" ;
+    s:creator      "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor       "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated  "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified "2022-01-21T13:09:32.695864Z" .
+
+:standardCopyTarget
+    a                         mms:Standard ;
+    mms:public                true ;
+    mms:belongsToOrganization :orgA ;
+    skos:prefLabel            "Empty CopyTarget Standard" ;
+    s:description             "Empty CopyTarget Standard" ;
+    s:creator                 "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor                  "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated             "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified            "2022-01-21T13:09:32.695864Z" .
+
+:standardA1
+    a                         mms:Standard ;
+    mms:public                true ;
+    mms:belongsToOrganization :orgA ;
+    skos:prefLabel            "Test Standard A1" ;
+    s:description             "A test standard." ;
+    s:creator                 "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor                  "ax533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated             "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified            "2022-01-21T13:09:32.695864Z" .
+
+:featureGroupA1_1
+    a                     mms:FeatureGroup ;
+    mms:belongsToStandard :standardA1 ;
+    skos:prefLabel        "Feature Group A1" ;
+    skos:broader          :featureGroupA1_3 ;
+    s:description         "A1 features" ;
+    s:creator             "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor              "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated         "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified        "2022-01-21T13:09:32.695864Z" .
+
+:featureGroupA1_2
+    a                     mms:FeatureGroup ;
+    mms:belongsToStandard :standardA1 ;
+    skos:prefLabel        "Feature Group A2" ;
+    skos:broader          :featureGroupA1_3 ;
+    s:description         "A2 features" ;
+    s:creator             "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor              "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated         "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified        "2022-01-21T13:09:32.695864Z" .
+
+:featureGroupA1_3
+    a                     mms:FeatureGroup ;
+    mms:belongsToStandard :standardA1 ;
+    skos:prefLabel        "Feature Group A3" ;
+    s:description         "The supergroup of A1 and A2" ;
+    s:creator             "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor              "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated         "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified        "2022-01-21T13:09:32.695864Z" .
+
+:propertySetA1_1
+    a                     mms:PropertySet ;
+    mms:belongsToStandard :standardA1 ;
+    s:name                "Property Set A1" ;
+    s:description         "A1 features" ;
+    s:creator             "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor              "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated         "2022-01-21T13:09:32.695864Z" ;
+    mms:usedInElementClass mms-ifc:IfcBeam;
+    mms:usedInElementClass mms-ifc:IfcBeamStandardCase ;
+    s:dateModified        "2022-01-21T13:09:32.695864Z" .
+
+:propertySetA1_2
+    a                     mms:PropertySet ;
+    mms:belongsToStandard :standardA1 ;
+    s:name                "Property Set A2" ;
+    s:description         "A1 features" ;
+    s:creator             "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor              "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated         "2022-01-21T13:09:32.695864Z" ;
+    mms:usedInElementClass mms-ifc:IfcWall;
+    mms:usedInElementClass mms-ifc:IfcWallElementedCase ;
+    mms:usedInElementClass mms-ifc:IfcWallStandardCase ;
+    s:dateModified        "2022-01-21T13:09:32.695864Z" .
+
+:propertySetA1_3
+    a                     mms:PropertySet ;
+    mms:belongsToStandard :standardA1 ;
+    s:name                "Property Set A3" ;
+    s:description         "A1 features" ;
+    s:creator             "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor              "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated         "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified        "2022-01-21T13:09:32.695864Z" .
+
+:propertySetB1_1
+    a                     mms:PropertySet ;
+    mms:belongsToStandard :standardA1 ;
+    s:name                "Property Set B1" ;
+    s:description         "A1 features" ;
+    s:creator             "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor              "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    mms:usedInElementClass mms-ifc:IfcBeam;
+    s:dateCreated         "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified        "2022-01-21T13:09:32.695864Z" .
+
+:propertySetB1_2
+    a                     mms:PropertySet ;
+    mms:belongsToStandard :standardB1 ;
+    s:name                "Property Set B2" ;
+    s:description         "B2 PropertySet" ;
+    s:creator             "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor              "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated         "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified        "2022-01-21T13:09:32.695864Z" .
+
+:featureA1_1
+    a                     mms:Feature ;
+    mms:private           false ;
+    mms:belongsToStandard :standardA1 ;
+    mms:dataType          mms:StringType ;
+    mms:featureGroup      :featureGroupA1_1, :featureGroupA1_2 ;
+    mms:propertySet       :propertySetA1_1, :propertySetA1_2 ;
+    s:name                "test feature A1" ;
+    s:creator             "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor              "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated         "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified        "2022-01-21T13:09:32.695864Z" .
+
+:featureA1_2
+    a                     mms:Feature ;
+    mms:private           false ;
+    mms:belongsToStandard :standardA1 ;
+    mms:dataType          mms:BooleanType ;
+    mms:featureGroup      :featureGroupA1_2 ;
+    s:name                "test feature A2" ;
+    s:creator             "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor              "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated         "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified        "2022-01-21T13:09:32.695864Z" .
+
+:featureA1_3
+    a                     mms:Feature ;
+    mms:private           false ;
+    mms:belongsToStandard :standardA1 ;
+    mms:dataType          <urn:uuid:cdef4567> ;
+    mms:featureGroup      :featureGroupA1_1 ;
+    s:name                "test length in cm feature" ;
+    s:creator             "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor              "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated         "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified        "2022-01-21T13:09:32.695864Z" .
+
+<urn:uuid:cdef4567>
+    a                mms:NumericType ;
+    mms:quantityKind quantitykind:Length ;
+    mms:unit         unit:CentiM .
+
+:featureA1_4
+    a                     mms:Feature ;
+    s:description         "" ;
+    s:name                "test enum" ;
+    mms:belongsToStandard :standardA1 ;
+    mms:featureGroup      :featureGroupA1_3 ;
+    mms:private           false ;
+    mms:dataType          <urn:uuid:1111aaaa> ;
+    s:creator             "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor              "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated         "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified        "2022-01-21T13:09:32.695864Z" .
+
+<urn:uuid:1111aaaa>
+    dtype:hasMember   <urn:uuid:tnxa92342>, <urn:uuid:9009009009> ;
+    a                 mms:EnumerationType ;
+    mms:allowMultiple false .
+
+<urn:uuid:tnxa92342>
+    s:description "first value" ;
+    dtype:value   <urn:uuid:3333ccccc> ;
+    vaem:name     "one" .
+
+<urn:uuid:9009009009>
+    s:description "second value" ;
+    dtype:value   <urn:uuid:2222bbbb> ;
+    vaem:name     "two" .
+
+
+:standardA2
+    a                         mms:Standard ;
+    mms:belongsToOrganization :orgA ;
+    mms:public                false ;
+    skos:prefLabel            "Test Standard A2" ;
+    s:description             "A test standard." ;
+    s:creator                 "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor                  "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated             "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified            "2022-01-21T13:09:32.695864Z" .
+
+:featureA2_1
+    a                     mms:Feature ;
+    mms:private           false ;
+    mms:belongsToStandard :standardA2 ;
+    mms:dataType          mms:StringType ;
+    s:name                "test feature A2_1" ;
+    s:creator             "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor              "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated         "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified        "2022-01-21T13:09:32.695864Z" .
+
+:featureA2_2
+    a                     mms:Feature ;
+    mms:private           false ;
+    mms:belongsToStandard :standardA2 ;
+    mms:dataType          mms:BooleanType ;
+    s:name                "test feature A2_2" ;
+    s:creator             "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor              "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated         "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified        "2022-01-21T13:09:32.695864Z" .
+
+
+:orgB
+    a              mms:Organization ;
+    s:name         "Test Organization B" ;
+    dc:description "Some test organization" ;
+    s:creator      "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor       "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated  "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified "2022-01-21T13:09:32.695864Z" .
+
+:standardB1
+    a                         mms:Standard ;
+    mms:belongsToOrganization :orgB ;
+    mms:public                false ;
+    skos:prefLabel            "Test Standard A1" ;
+    s:description             "A test standard." ;
+    s:creator                 "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor                  "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated             "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified            "2022-01-21T13:09:32.695864Z" .
+
+:featureB1_1
+    a                     mms:Feature ;
+    mms:private           false ;
+    mms:belongsToStandard :standardB1 ;
+    mms:dataType          mms:StringType ;
+    s:name                "test feature B1" ;
+    s:creator             "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor              "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated         "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified        "2022-01-21T13:09:32.695864Z" .
+
+:featureB1_2
+    a                     mms:Feature ;
+    mms:private           false ;
+    mms:belongsToStandard :standardB1 ;
+    mms:dataType          mms:BooleanType ;
+    s:name                "test feature B2" ;
+    s:creator             "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor              "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated         "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified        "2022-01-21T13:09:32.695864Z" .
+
+:featureB1_3
+    a                     mms:Feature ;
+    mms:private           false ;
+    mms:belongsToStandard :standardB1 ;
+    mms:dataType          <urn:uuid:abc123> ;
+    s:name                "test numeric feature B1_3" ;
+    s:creator             "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor              "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated         "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified        "2022-01-21T13:09:32.695864Z" .
+
+<urn:uuid:abc123>
+    a                mms:NumericType ;
+    mms:quantityKind quantitykind:Length ;
+    mms:unit         unit:M .
+
+
+:featureB1_4
+    a                     mms:Feature ;
+    s:description         "" ;
+    s:name                "test enum" ;
+    mms:belongsToStandard :standardB1 ;
+    mms:private           false ;
+    mms:dataType          <urn:uuid:1212121abababab> ;
+    s:creator             "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor              "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated         "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified        "2022-01-21T13:09:32.695864Z" .
+
+<urn:uuid:1212121abababab>
+    dtype:hasMember   <urn:uuid:b1b1b1b1b1>, <urn:uuid:b2b2b2b2b2b> ;
+    a                 mms:EnumerationType ;
+    mms:allowMultiple false .
+
+<urn:uuid:b1b1b1b1b1>
+    s:description "erster Wert" ;
+    dtype:value   <urn:uuid:787878dfdfdf> ;
+    vaem:name     "eins" .
+
+<urn:uuid:b2b2b2b2b2b>
+    s:description "zweiter Wert" ;
+    dtype:value   <urn:uuid:8899898asdfsdf> ;
+    vaem:name     "zwei" .
+
+
+# Projects
+
+:project1
+    a              mms:Project ;
+    s:name         "Project One" ;
+    s:creator      "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor       "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated  "2023-01-21T13:09:32.695864Z" ;
+    s:dateModified "2023-01-21T13:09:32.695864Z" .
+
+:project2
+    a              mms:Project ;
+    s:name         "Project Two" ;
+    s:creator      "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor       "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated  "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified "2022-01-21T13:09:32.695864Z" .
+
+:project3
+    a              mms:Project ;
+    s:name         "Project Three" ;
+    s:creator      "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor       "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated  "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified "2022-01-21T13:09:32.695864Z" .
+
+:project4
+    a              mms:Project ;
+    s:name         "Project Four" ;
+    s:creator      "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor       "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated  "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified "2022-01-21T13:09:32.695864Z" .
+
+:project5
+    a              mms:Project ;
+    s:name         "Project Five" ;
+    s:creator      "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor       "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated  "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified "2022-01-21T13:09:32.695864Z" .
+
+:projectChangeActions
+    a              mms:Project ;
+    s:name         "Project With Change Actions" ;
+    s:creator      "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor       "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated  "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified "2022-01-21T13:09:32.695864Z" .
+
+# Project Standards
+# Project 1 Standard A - 4 Features
+
+:standardP1_A
+    a                            mms:Standard ;
+    skos:prefLabel               "Feature Set of Org A" ;
+    mms:public                   false ;
+    mms:belongsToProject         :project1 ;
+    mms:importedFromOrganization :orgA ;
+    s:creator                    "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor                     "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated                "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified               "2022-01-21T13:09:32.695864Z" .
+
+# Project 1 Standard B - 3 Features
+
+:standardP1_B
+    a                            mms:Standard ;
+    skos:prefLabel               "Feature Set of Org B" ;
+    mms:public                   false ;
+    mms:belongsToProject         :project1 ;
+    mms:importedFromOrganization :orgB ;
+    s:creator                    "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor                     "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated                "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified               "2022-01-21T13:09:32.695864Z" .
+
+:standardP2_S1
+    a                    mms:Standard ;
+    skos:prefLabel       "Feature Set 1 of Project 2" ;
+    mms:public           false ;
+    mms:belongsToProject :project2 ;
+    s:creator            "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor             "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated        "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified       "2022-01-21T13:09:32.695864Z" .
+
+# Project 3 Standard 1 - 1 Feature
+
+:standardP3_S1
+    a                    mms:Standard ;
+    skos:prefLabel       "Feature Set 1 of Project 3" ;
+    mms:public           false ;
+    mms:belongsToProject :project3 ;
+    s:creator            "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor             "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated        "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified       "2022-01-21T13:09:32.695864Z" .
+
+# Project 3 Standard 2 - 1 Feature
+
+:standardP3_S2
+    a                    mms:Standard ;
+    skos:prefLabel       "Feature Set 2 of Project 3" ;
+    mms:public           false ;
+    mms:belongsToProject :project3 ;
+    s:creator            "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor             "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated        "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified       "2022-01-21T13:09:32.695864Z" .
+
+# Actions for mapping
+
+
+:deleteAction1_AG1
+    a           mms:DeleteAction ;
+    mms:feature :featureP1_A1_1 .
+
+:deleteAction2_AG1
+    a           mms:DeleteAction ;
+    mms:feature :featureP1_A1_2 .
+
+
+:deleteAction1_AG2
+    a           mms:DeleteAction ;
+    mms:feature :featureP1_A1_1 .
+
+:deleteAction2_AG2
+    a           mms:DeleteAction ;
+    mms:feature :featureP1_A1_2 .
+
+:deleteAction1_AG3
+    a           mms:DeleteAction ;
+    mms:feature :featureP1_A1_1 .
+
+:deleteAction2_AG3
+    a           mms:DeleteAction ;
+    mms:feature :featureP1_A1_2 .
+
+:deleteAction1_AG4
+    a           mms:DeleteAction ;
+    mms:feature :featureP1_A1_1 .
+
+:deleteAction2_AG4
+    a           mms:DeleteAction ;
+    mms:feature :featureP1_A1_2 .
+
+:deleteAction1_AG5
+    a           mms:DeleteAction ;
+    mms:feature :featureP1_A1_1 .
+
+:deleteAction2_AG5
+    a           mms:DeleteAction ;
+    mms:feature :featureP1_A1_2 .
+
+:deleteAction1_AG6
+    a           mms:DeleteAction ;
+    mms:feature :featureP1_A1_1 .
+
+:deleteAction2_AG6
+    a           mms:DeleteAction ;
+    mms:feature :featureP1_A1_2 .
+
+:deleteAction1_AG7
+    a           mms:DeleteAction ;
+    mms:feature :featureP3_S2_1 .
+
+:deleteAction2_AG7
+    a           mms:DeleteAction ;
+    mms:feature :featureP3_S2_2 .
+
+:deleteAction1_AG8
+    a           mms:DeleteAction ;
+    mms:feature :featureP2_S1_1 .
+
+:deleteAction2_AG8
+    a           mms:DeleteAction ;
+    mms:feature :featureP2_S1_2 .
+
+:deleteAction1_P3_AG1
+    a           mms:DeleteAction ;
+    mms:feature :featureP3_S1_1 .
+
+
+# Project Mappings
+
+:mappingP1_A
+    a                    mms:Mapping ;
+    mms:belongsToProject :project1 ;
+    s:name               "mappingP1_A" ;
+    s:creator            "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor             "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated        "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified       "2022-01-21T13:09:32.695864Z" ;
+    mms:action :deleteAction1_AG1 ;
+    mms:action :deleteAction2_AG1 ;
+    mms:action :deleteAction1_AG2 ;
+    mms:action :deleteAction2_AG2 ;
+    mms:condition        :condition1 .
+
+:condition1
+    a             mms:Condition ;
+    a             mms:SingleCondition ;
+    mms:feature   :featureP1_A1_1 ;
+    mms:predicate mms:present .
+
+:condition1a
+    a             mms:Condition ;
+    a             mms:SingleCondition ;
+    mms:feature   :featureP1_A1_1 ;
+    mms:predicate mms:present .
+
+:condition1b
+    a             mms:Condition ;
+    a             mms:SingleCondition ;
+    mms:feature   :featureP1_A1_1 ;
+    mms:predicate mms:present .
+
+:condition1c
+    a             mms:Condition ;
+    a             mms:SingleCondition ;
+    mms:feature   :featureP1_A1_1 ;
+    mms:predicate mms:present .
+
+
+:condition2a
+    a             mms:Condition ;
+    a             mms:SingleCondition ;
+    mms:feature   :featureP1_A1_2 ;
+    mms:predicate mms:present .
+
+:condition2b
+    a             mms:Condition ;
+    a             mms:SingleCondition ;
+    mms:feature   :featureP1_A1_2 ;
+    mms:predicate mms:present .
+
+:condition2c
+    a             mms:Condition ;
+    a             mms:SingleCondition ;
+    mms:feature   :featureP1_A1_2 ;
+    mms:predicate mms:present .
+
+:condition3
+    a                  mms:Condition ;
+    a                  mms:SingleCondition ;
+    mms:feature        :featureP1_A1_2 ;
+    mms:predicate      mms:contains ;
+    mms:conditionValue "blabla" .
+
+:condition5
+    a                  mms:Condition ;
+    a                  mms:SingleCondition ;
+    mms:feature        :featureP1_A1_2 ;
+    mms:predicate      mms:contains ;
+    mms:conditionValue "blabla" .
+
+:conditionGroup1
+    a              mms:Condition ;
+    a              mms:ConditionGroup ;
+    mms:connective mms:and ;
+    mms:condition  :condition1a ;
+    mms:condition  :condition2a .
+
+:conditionGroup2
+    a              mms:Condition ;
+    a              mms:ConditionGroup ;
+    mms:connective mms:and ;
+    mms:condition  :condition1b ;
+    mms:condition  :condition2b .
+
+:conditionGroup3
+    a              mms:Condition ;
+    a              mms:ConditionGroup ;
+    mms:connective mms:or ;
+    mms:condition  :condition1c ;
+    mms:condition  :condition2c ;
+    mms:condition  :conditionGroup4 .
+
+:conditionGroup4
+    a              mms:Condition ;
+    a              mms:ConditionGroup ;
+    mms:connective mms:and ;
+    mms:condition  :condition3 ;
+    mms:condition  :condition5 .
+
+:conditionGroupNested
+    a              mms:Condition ;
+    a              mms:ConditionGroup ;
+    mms:connective mms:or ;
+    mms:condition  :conditionGroup1 ;
+    mms:condition  :conditionGroup3 .
+
+:mappingP1_B
+    a                    mms:Mapping ;
+    mms:belongsToProject :project1 ;
+    mms:action           :deleteAction1_AG3 ;
+    mms:action           :deleteAction2_AG3 ;
+    s:name               "mapping2" ;
+    s:creator            "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor             "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated        "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified       "2022-01-21T13:09:32.695864Z" .
+
+:mappingP1_D
+    a                    mms:Mapping ;
+    mms:belongsToProject :project1 ;
+    mms:action           :deleteAction1_AG4 ;
+    mms:action           :deleteAction2_AG4 ;
+    s:name               "mappingConditionNestedGroup" ;
+    s:creator            "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor             "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated        "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified       "2022-01-21T13:09:32.695864Z" ;
+    mms:condition        :conditionGroupNested .
+
+:mappingP1_C
+    a                    mms:Mapping ;
+    mms:belongsToProject :project1 ;
+    mms:action           :deleteAction1_AG5 ;
+    mms:action           :deleteAction2_AG5 ;
+    mms:action           :deleteAction1_AG6 ;
+    mms:action           :deleteAction2_AG6 ;
+    s:name               "mappingConditionGroup" ;
+    s:creator            "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor             "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated        "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified       "2022-01-21T13:09:32.695864Z" ;
+    mms:condition        :conditionGroup2 .
+
+:mappingP2_A
+    a                    mms:Mapping ;
+    mms:belongsToProject :project2 ;
+    mms:action           :deleteAction1_AG7 ;
+    mms:action           :deleteAction2_AG7 ;
+    s:name               "mapping1" ;
+    s:creator            "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor             "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated        "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified       "2022-01-21T13:09:32.695864Z" .
+
+:mappingP2_B
+    a                    mms:Mapping ;
+    mms:belongsToProject :project2 ;
+    mms:action           :deleteAction1_AG8 ;
+    mms:action           :deleteAction2_AG8 ;
+    s:name               "mapping2" ;
+    s:creator            "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor             "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated        "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified       "2022-01-21T13:09:32.695864Z" .
+
+:mappingP3_A
+    a                    mms:Mapping ;
+    mms:belongsToProject :project3 ;
+    mms:action           :deleteAction1_P3_AG1 ;
+    s:name               "mapping1" ;
+    s:creator            "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor             "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated        "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified       "2022-01-21T13:09:32.695864Z" .
+
+# Project PropertySets
+# Project 1
+:propertySetP1_A1_1
+    a                     mms:PropertySet ;
+    mms:belongsToStandard :standardP1_A ;
+    s:name                "propertySetP1_A1_1" ;
+    s:description         "propertySetP1_A1_1" ;
+    s:creator             "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor              "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated         "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified        "2022-01-21T13:09:32.695864Z" .
+
+# Project Features
+# Project 1
+
+:featureP1_A1_1
+    a                     mms:Feature ;
+    mms:private           false ;
+    mms:copyOf            :featureA1_1 ;
+    mms:belongsToStandard :standardP1_A ;
+    mms:dataType          mms:StringType ;
+    s:name                "copy of test feature A1_1" ;
+    s:creator             "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor              "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated         "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified        "2022-01-21T13:09:32.695864Z" .
+
+
+:featureP1_A1_2
+    a                     mms:Feature ;
+    mms:private           false ;
+    mms:copyOf            :featureA1_1 ;
+    mms:belongsToStandard :standardP1_A ;
+    mms:dataType          mms:StringType ;
+    s:name                "copy of test feature A1_1" ;
+    s:creator             "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor              "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated         "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified        "2022-01-21T13:09:32.695864Z" .
+
+:featureP1_A1_3
+    a                            mms:Feature ;
+    mms:private                  false ;
+    mms:copyOf                   :featureA1_3 ;
+    mms:belongsToStandard        :standardP1_A ;
+    mms:importedFromOrganization :orgA ;
+    mms:dataType                 <urn:uuid:aabb1122> ;
+    s:name                       "test length in cm feature" ;
+    s:creator                    "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor                     "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated                "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified               "2022-01-21T13:09:32.695864Z" .
+
+:featureP1_A1_5
+    a                            mms:Feature ;
+    mms:private                  false ;
+    mms:belongsToStandard        :standardP1_A ;
+    mms:importedFromOrganization :orgA ;
+    mms:dataType                 mms:BooleanType ;
+    s:name                       "test feature A2" ;
+    s:creator                    "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor                     "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated                "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified               "2022-01-21T13:09:32.695864Z" .
+
+
+<urn:uuid:aabb1122>
+    a                mms:NumericType ;
+    mms:quantityKind quantitykind:Length ;
+    mms:unit         unit:CentiM .
+
+:featureP1_A1_4
+    a                            mms:Feature ;
+    s:description                "" ;
+    s:name                       "test enum" ;
+    mms:belongsToStandard        :standardP1_A ;
+    mms:importedFromOrganization :orgA ;
+    mms:copyOf                   :featureA1_4 ;
+    mms:private                  false ;
+    mms:dataType                 <urn:uuid:2342345wernnnlk> ;
+    s:creator                    "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor                     "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated                "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified               "2022-01-21T13:09:32.695864Z" .
+
+<urn:uuid:2342345wernnnlk>
+    dtype:hasMember   <urn:uuid:9q9q9q9q9q>, <urn:uuid:6z6z6z6z6>, <urn:uuid:6z6z6z6z7> ;
+    a                 mms:EnumerationType ;
+    mms:allowMultiple false
+.
+
+<urn:uuid:9q9q9q9q9q>
+    s:description "first value" ;
+    dtype:value   <urn:uuid:3333ccccc> ;
+    vaem:name     "one" .
+
+<urn:uuid:6z6z6z6z6>
+    s:description "second value" ;
+    dtype:value   <urn:uuid:2222bbbb> ;
+    vaem:name     "two" .
+
+<urn:uuid:6z6z6z6z7>
+    s:description "third value" ;
+    dtype:value   <urn:uuid:4444dddd> ;
+    vaem:name     "three" .
+
+:featureP1_B1_1
+    a                     mms:Feature ;
+    mms:private           false ;
+    mms:copyOf            :featureB1_1 ;
+    mms:belongsToStandard :standardP1_B ;
+    mms:dataType          mms:StringType ;
+    s:name                "copy of test feature B1_1" ;
+    s:creator             "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor              "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated         "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified        "2022-01-21T13:09:32.695864Z" .
+
+:featureP1_B1_3
+    a                            mms:Feature ;
+    mms:private                  false ;
+    mms:copyOf                   :featureB1_3 ;
+    mms:belongsToStandard        :standardP1_B ;
+    mms:importedFromOrganization :orgB ;
+    mms:dataType                 <urn:uuid:3344xxyy> ;
+    s:name                       "test numeric feature B1_3" ;
+    s:creator                    "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor                     "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated                "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified               "2022-01-21T13:09:32.695864Z" .
+
+<urn:uuid:3344xxyy>
+    a                mms:NumericType ;
+    mms:quantityKind quantitykind:Length ;
+    mms:unit         unit:M .
+
+:featureP1_B1_4
+    a                            mms:Feature ;
+    s:description                "" ;
+    s:name                       "test enum" ;
+    mms:importedFromOrganization :orgB ;
+    mms:belongsToStandard        :standardP1_B ;
+    mms:copyOf                   :featureB1_4 ;
+    mms:private                  false ;
+    mms:dataType                 <urn:uuid:454545kjkjkjkj> ;
+    s:creator                    "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor                     "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated                "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified               "2022-01-21T13:09:32.695864Z" .
+
+<urn:uuid:454545kjkjkjkj>
+    dtype:hasMember   <urn:uuid:xvxvxvxvx7878787>, <urn:uuid:uiuiuiuiuiuiui> ;
+    a                 mms:EnumerationType ;
+    mms:allowMultiple false .
+
+<urn:uuid:xvxvxvxvx7878787>
+    s:description "erster Wert" ;
+    dtype:value   <urn:uuid:575757ajajajaj> ;
+    vaem:name     "eins" .
+
+<urn:uuid:uiuiuiuiuiuiui>
+    s:description "zweiter Wert" ;
+    dtype:value   <urn:uuid:67676dfdfdf> ;
+    vaem:name     "zwei" .
+
+#Project 2
+
+:featureP2_S1_1
+    a                     mms:Feature ;
+    mms:private           false ;
+    mms:copyOf            :featureA1_1 ;
+    mms:belongsToStandard :standardP2_S1 ;
+    mms:dataType          mms:StringType ;
+    s:name                "copy of test feature S1_1" ;
+    s:creator             "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor              "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated         "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified        "2022-01-21T13:09:32.695864Z" .
+
+
+:featureP2_S1_2
+    a                     mms:Feature ;
+    mms:private           false ;
+    mms:copyOf            :featureA1_1 ;
+    mms:belongsToStandard :standardP2_S1 ;
+    mms:dataType          mms:StringType ;
+    s:name                "copy of test feature S1_1" ;
+    s:creator             "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor              "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated         "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified        "2022-01-21T13:09:32.695864Z" .
+
+:featureP2_S1_3
+    a                     mms:Feature ;
+    mms:private           false ;
+    mms:copyOf            :featureA1_3 ;
+    mms:belongsToStandard :standardP2_S1 ;
+    mms:dataType          <urn:uuid:xxyy8899> ;
+    s:name                "test length in cm feature" ;
+    s:creator             "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor              "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated         "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified        "2022-01-21T13:09:32.695864Z" .
+
+<urn:uuid:xxyy8899>
+    a                mms:NumericType ;
+    mms:quantityKind quantitykind:Length ;
+    mms:unit         unit:CentiM .
+
+#Project 3
+
+:featureP3_S1_1
+    a                     mms:Feature ;
+    mms:private           false ;
+    mms:belongsToStandard :standardP3_S1 ;
+    mms:dataType          mms:StringType ;
+    s:name                "String Feature of Project 3" ;
+    s:creator             "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor              "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated         "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified        "2022-01-21T13:09:32.695864Z" .
+
+:featureP3_S2_1
+    a                     mms:Feature ;
+    mms:private           false ;
+    mms:belongsToStandard :standardP3_S2 ;
+    mms:dataType          mms:StringType ;
+    s:name                "String Feature of Project 3" ;
+    s:creator             "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor              "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated         "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified        "2022-01-21T13:09:32.695864Z" .
+
+:featureP3_S2_2
+    a                     mms:Feature ;
+    mms:private           false ;
+    mms:copyOf            :featureP3_S1_1 ;
+    mms:belongsToStandard :standardP3_S2 ;
+    mms:dataType          mms:StringType ;
+    s:name                "Copy of FeatureP3_S1_1" ;
+    s:creator             "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor              "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated         "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified        "2022-01-21T13:09:32.695864Z" .
+
+:standardC1
+    a                         mms:Standard ;
+    mms:public                true ;
+    mms:belongsToOrganization :orgA ;
+    skos:prefLabel            "Test Standard C1" ;
+    s:description             "A test standard." ;
+    s:creator                 "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor                  "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated             "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified            "2022-01-21T13:09:32.695864Z" .
+
+:propertySetC1_1
+    a                     mms:PropertySet ;
+    mms:belongsToStandard :standardC1 ;
+    s:name                "Property Set C1" ;
+    s:description         "C1 features" ;
+    s:creator             "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor              "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated         "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified        "2022-01-21T13:09:32.695864Z" .
+
+:featureC1_1
+    a                     mms:Feature ;
+    mms:private           false ;
+    mms:belongsToStandard :standardC1 ;
+    mms:dataType          mms:StringType ;
+    mms:propertySet       :propertySetC1_1 ;
+    s:name                "feature in StandardC1" ;
+    s:creator             "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor              "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated         "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified        "2022-01-21T13:09:32.695864Z" .
+
+:propertySetC1_2
+    a                     mms:PropertySet ;
+    mms:belongsToStandard :standardC1 ;
+    s:name                "Property Set C2" ;
+    s:description         "Empty PropertySet" ;
+    s:creator             "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor              "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated         "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified        "2023-06-28T13:09:32.695864Z" .
+
+:standardP5_A
+    a                            mms:Standard ;
+    skos:prefLabel               "Feature Set of Org A" ;
+    mms:public                   false ;
+    mms:belongsToProject         :project5 ;
+    mms:importedFromOrganization :orgA ;
+    s:creator                    "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:editor                     "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateCreated                "2022-01-21T13:09:32.695864Z" ;
+    s:dateModified               "2023-06-28T13:09:32.695864Z" .
+
+:historyStandardP3_S1
+    a                           mms:HistoryEntry ;
+    mms:relatedEntity           :standardP3_S1 ;
+    s:editor                    "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateModified               "2022-01-23T13:09:32.695864Z" .
+
+:historyFeatureP3_S1_1
+    a                           mms:HistoryEntry ;
+    mms:relatedEntity           :featureP3_S1_1 ;
+    s:editor                    "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateModified               "2022-01-23T13:09:32.695864Z" .
+
+:historyStandardP5_A_1
+    a                           mms:HistoryEntry ;
+    mms:relatedEntity           :standardP5_A ;
+    s:editor                    "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateModified               "2022-01-23T13:09:32.695864Z" .
+
+:historyStandardP5_A_2
+    a                           mms:HistoryEntry ;
+    mms:relatedEntity           :standardP5_A ;
+    s:editor                    "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateModified               "2022-01-27T13:09:32.695864Z" .
+:historyStandardP5_A_3
+    a                           mms:HistoryEntry ;
+    mms:relatedEntity           :standardP5_A ;
+    s:editor                    "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateModified               "2022-04-28T13:09:32.695864Z" .
+:historyStandardP5_A_4
+    a                           mms:HistoryEntry ;
+    mms:relatedEntity           :standardP5_A ;
+    s:editor                    "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateModified               "2023-01-21T13:09:32.695864Z" .
+:historyStandardP5_A_5
+    a                           mms:HistoryEntry ;
+    mms:relatedEntity           :standardP5_A ;
+    s:editor                    "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateModified               "2023-01-25T13:09:32.695864Z" .
+:historyStandardP5_A_6
+    a                           mms:HistoryEntry ;
+    mms:relatedEntity           :standardP5_A ;
+    s:editor                    "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateModified               "2023-06-28T13:09:32.695864Z" .
+
+:historyPropertySetC1_2_1
+    a                           mms:HistoryEntry ;
+    mms:relatedEntity           :propertySetC1_2  ;
+    s:editor                    "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateModified               "2022-01-23T13:09:32.695864Z" .
+:historyPropertySetC1_2_2
+    a                           mms:HistoryEntry ;
+    mms:relatedEntity           :propertySetC1_2  ;
+    s:editor                    "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateModified               "2022-01-27T13:09:32.695864Z" .
+:historyPropertySetC1_2_3
+    a                           mms:HistoryEntry ;
+    mms:relatedEntity           :propertySetC1_2  ;
+    s:editor                    "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateModified               "2022-04-28T13:09:32.695864Z" .
+:historyPropertySetC1_2_4
+    a                           mms:HistoryEntry ;
+    mms:relatedEntity           :propertySetC1_2  ;
+    s:editor                    "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateModified               "2023-01-21T13:09:32.695864Z" .
+:historyPropertySetC1_2_5
+    a                           mms:HistoryEntry ;
+    mms:relatedEntity           :propertySetC1_2  ;
+    s:editor                    "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateModified               "2023-01-25T13:09:32.695864Z" .
+:historyPropertySetC1_2_6
+    a                           mms:HistoryEntry ;
+    mms:relatedEntity           :propertySetC1_2  ;
+    s:editor                    "be533d70-0cd5-4425-beda-080c56b8b820" ;
+    s:dateModified               "2023-06-28T13:09:32.695864Z" .

@@ -1,0 +1,11 @@
+PREFIX mms: <https://mms.researchstudio.at/mms#>
+PREFIX s: <http://schema.org/>
+        SELECT DISTINCT ?entityId ?entityType ?entityDateCreated ?entityDateModified
+WHERE { ?entityId <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?entityType ;
+s:dateCreated ?entityDateCreated ;
+        s:dateModified ?entityDateModified .
+?entityId s:editor ?entityEditor .
+{ ?entityId <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?entityType .
+        FILTER ( ( ?entityEditor NOT IN ( "ax533d70-0cd5-4425-beda-080c56b8b820" ) ) ) }
+FILTER ( ?entityType IN ( mms:Standard, mms:Project, mms:Organization, mms:Feature, mms:FeatureGroup, mms:PropertySet, mms:Mapping ) ) }
+ORDER BY DESC( ?entityDateModified )

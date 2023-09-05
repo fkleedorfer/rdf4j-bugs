@@ -1,0 +1,777 @@
+@prefix :             <https://mms.researchstudio.at/mms-ifc#> .
+@prefix owl:          <http://www.w3.org/2002/07/owl#> .
+@prefix dc:           <http://purl.org/dc/elements/1.1/> .
+@prefix xsd:          <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms:      <http://purl.org/dc/terms/> .
+@prefix vann:         <http://purl.org/vocab/vann/> .
+@prefix skos:         <http://www.w3.org/2004/02/skos/core#> .
+
+:
+    a                             owl:Ontology ;
+    owl:versionIRI                <https://mms.researchstudio.at/mms-ifc/1.0> ;
+    dc:creator                    "Fabian Suda", "Florian Kleedorfer" ;
+    dc:title                      "Merkmalservice Ifc Ontology"@en ;
+    dc:title                      "Merkmalservice Ifc Ontologie"@de ;
+    dcterms:created               "2022-02-14"^^xsd:date ;
+    dcterms:license               <https://creativecommons.org/licenses/by/4.0/> ;
+    vann:preferredNamespacePrefix "mms-ifc" .
+
+
+:IfcClass
+    a owl:class .
+
+:IfcProduct
+    a :IfcClass .
+
+:IfcElement
+    a :IfcClass ;
+    skos:broader :IfcProduct .
+
+:IfcSpatialElement
+    a :IfcClass ;
+    skos:broader :IfcProduct.
+
+:IfcExternalSpatialStructureElement
+    a :IfcClass ;
+    skos:broader :IfcSpatialElement.
+
+:IfcExternalSpatialElement
+    a :IfcClass ;
+    skos:broader :IfcExternalSpatialStructureElement.
+
+:IfcSpatialStructureElement
+    a :IfcClass ;
+    skos:broader :IfcSpatialElement.
+
+:IfcBuildingStorey
+    a :IfcClass ;
+    skos:broader :IfcSpatialStructureElement.
+
+:IfcFacility
+    a :IfcClass ;
+    skos:broader :IfcSpatialStructureElement.
+
+:IfcBridge
+    a :IfcClass ;
+    skos:broader :IfcFacility.
+
+:IfcBuilding
+    a :IfcClass ;
+    skos:broader :IfcFacility.
+
+:IfcMarineFacility
+    a :IfcClass ;
+    skos:broader :IfcFacility.
+
+:IfcRailway
+    a :IfcClass ;
+    skos:broader :IfcFacility.
+
+:IfcRoad
+    a :IfcClass ;
+    skos:broader :IfcFacility.
+
+:IfcFacilityPart
+    a :IfcClass ;
+    skos:broader :IfcSpatialStructureElement.
+
+:IfcBridgePart
+    a :IfcClass ;
+    skos:broader :IfcFacilityPart.
+
+:IfcSite
+    a :IfcClass ;
+    skos:broader :IfcSpatialStructureElement.
+
+:IfcSpace
+    a :IfcClass ;
+    skos:broader :IfcSpatialStructureElement.
+
+:IfcSpatialZone
+    a :IfcClass ;
+    skos:broader :IfcSpatialElement.
+
+:IfcBuildingElement
+    a :IfcClass ;
+    skos:related :IfcBuiltElement ;
+    skos:broader :IfcElement .
+
+:IfcBuiltElement
+    a :IfcClass ;
+    skos:related :IfcBuildingElement ;
+    skos:broader :IfcElement .
+
+:IfcDeepFoundation
+    a :IfcClass ;
+    skos:broader :IfcBuiltElement .
+
+:IfcPile
+    a :IfcClass ;
+    skos:broader :IfcDeepFoundation .
+
+:IfcCaissonFoundation
+    a :IfcClass ;
+    skos:broader :IfcDeepFoundation .
+
+:IfcNavigatorElement
+    a :IfcClass ;
+    skos:broader :IfcBuiltElement .
+
+:IfcStair
+    a :IfcClass ;
+    skos:broader :IfcBuiltElement .
+
+:IfcChimney
+    a :IfcClass ;
+    skos:broader :IfcBuiltElement .
+
+:IfcEarthworksElement
+    a :IfcClass ;
+    skos:broader :IfcBuiltElement .
+
+:IfcEarthworksFill
+    a :IfcClass ;
+    skos:broader :IfcEarthworksElement .
+
+:IfcReinforcedSoil
+    a :IfcClass ;
+    skos:broader :IfcEarthworksElement .
+
+:IfcCurtainWall
+    a :IfcClass ;
+    skos:broader :IfcBuiltElement .
+
+:IfcBearing
+    a :IfcClass ;
+    skos:broader :IfcBuiltElement .
+:IfcWall
+    a :IfcClass ;
+    skos:broader :IfcBuiltElement .
+
+:IfcWallStandardCase
+    a :IfcClass ;
+    skos:broader :IfcWall .
+
+:IfcWallElementedCase
+    a :IfcClass ;
+    skos:broader :IfcWall .
+
+:IfcRailing
+    a :IfcClass ;
+    skos:broader :IfcBuiltElement .
+
+:IfcRamp
+    a :IfcClass ;
+    skos:broader :IfcBuiltElement .
+
+:IfcSlab
+    a :IfcClass ;
+    skos:broader :IfcBuiltElement .
+
+:IfcSlabElementedCase
+    a :IfcClass ;
+    skos:broader :IfcSlab .
+
+:IfcSlabStandardCase
+    a :IfcClass ;
+    skos:broader :IfcSlab .
+
+:IfcBuildingElementProxy
+    a :IfcClass ;
+    skos:broader :IfcBuiltElement .
+
+:IfcRoof
+    a :IfcClass ;
+    skos:broader :IfcBuiltElement .
+
+:IfcBeam
+    a :IfcClass ;
+    skos:broader :IfcBuiltElement .
+
+:IfcBeamStandardCase
+    a :IfcClass ;
+    skos:broader :IfcBeam .
+
+:IfcKerb
+    a :IfcClass ;
+    skos:broader :IfcBuiltElement .
+
+:IfcCourse
+    a :IfcClass ;
+    skos:broader :IfcBuiltElement .
+
+:IfcTrackElement
+    a :IfcClass ;
+    skos:broader :IfcBuiltElement .
+
+:IfcPlate
+    a :IfcClass ;
+    skos:broader :IfcBuiltElement .
+
+:IfcPlateStandardCase
+    a :IfcClass ;
+    skos:broader :IfcPlate .
+
+:IfcMooringDevice
+    a :IfcClass ;
+    skos:broader :IfcBuiltElement .
+
+:IfcPavement
+    a :IfcClass ;
+    skos:broader :IfcBuiltElement .
+
+:IfcDoor
+    a :IfcClass ;
+    skos:broader :IfcBuiltElement .
+
+:IfcDoorStandardCase
+    a :IfcClass ;
+    skos:broader :IfcDoor .
+
+:IfcMember
+    a :IfcClass ;
+    skos:broader :IfcBuiltElement .
+
+:IfcMemberStandardCase
+    a :IfcClass ;
+    skos:broader :IfcMember .
+
+:IfcStairFlight
+    a :IfcClass ;
+    skos:broader :IfcBuiltElement .
+
+:IfcCovering
+    a :IfcClass ;
+    skos:broader :IfcBuiltElement .
+
+:IfcFooting
+    a :IfcClass ;
+    skos:broader :IfcBuiltElement .
+
+:IfcColumn
+    a :IfcClass ;
+    skos:broader :IfcBuiltElement .
+
+:IfcColumnStandardCase
+    a :IfcClass ;
+    skos:broader :IfcColumn .
+
+:IfcRail
+    a :IfcClass ;
+    skos:broader :IfcBuiltElement .
+
+:IfcShadingDevice
+    a :IfcClass ;
+    skos:broader :IfcBuiltElement .
+
+:IfcWindow
+    a :IfcClass ;
+    skos:broader :IfcBuiltElement .
+
+:IfcWindowStandardCase
+    a :IfcClass ;
+    skos:broader :IfcWindow .
+
+:IfcRampFlight
+    a :IfcClass ;
+    skos:broader :IfcBuiltElement .
+
+:IfcCivilElement
+    a :IfcClass  ;
+    skos:broader :IfcElement .
+
+:IfcDistributionElement
+    a :IfcClass  ;
+    skos:broader :IfcElement .
+
+:IfcDistributionControlElement
+    a :IfcClass  ;
+    skos:broader :IfcDistributionElement .
+
+:IfcActuator
+    a :IfcClass  ;
+    skos:broader :IfcDistributionControlElement .
+
+:IfcAlarm
+    a :IfcClass  ;
+    skos:broader :IfcDistributionControlElement .
+
+:IfcController
+    a :IfcClass  ;
+    skos:broader :IfcDistributionControlElement .
+
+:IfcFlowInstrument
+    a :IfcClass  ;
+    skos:broader :IfcDistributionControlElement .
+
+:IfcProtectiveDeviceTrippingUnit
+    a :IfcClass  ;
+    skos:broader :IfcDistributionControlElement .
+
+:IfcSensor
+    a :IfcClass  ;
+    skos:broader :IfcDistributionControlElement .
+
+:IfcUnitaryControlElement
+    a :IfcClass  ;
+    skos:broader :IfcDistributionControlElement .
+
+:IfcDistributionFlowElement
+    a :IfcClass  ;
+    skos:broader :IfcDistributionElement .
+
+:IfcDistributionChamberElement
+    a :IfcClass  ;
+    skos:broader :IfcDistributionFlowElement .
+
+:IfcEnergyConversionDevice
+    a :IfcClass  ;
+    skos:broader :IfcDistributionFlowElement .
+
+:IfcAirToAirHeatRecovery
+    a :IfcClass  ;
+    skos:broader :IfcEnergyConversionDevice .
+
+:IfcBoiler
+    a :IfcClass  ;
+    skos:broader :IfcEnergyConversionDevice .
+
+:IfcBurner
+    a :IfcClass  ;
+    skos:broader :IfcEnergyConversionDevice .
+
+:IfcChiller
+    a :IfcClass  ;
+    skos:broader :IfcEnergyConversionDevice .
+
+:IfcCoil
+    a :IfcClass  ;
+    skos:broader :IfcEnergyConversionDevice .
+
+:IfcCondenser
+    a :IfcClass  ;
+    skos:broader :IfcEnergyConversionDevice .
+
+:IfcCooledBeam
+    a :IfcClass  ;
+    skos:broader :IfcEnergyConversionDevice .
+
+:IfcCoolingTower
+    a :IfcClass  ;
+    skos:broader :IfcEnergyConversionDevice .
+
+:IfcElectricGenerator
+    a :IfcClass  ;
+    skos:broader :IfcEnergyConversionDevice .
+
+:IfcElectricMotor
+    a :IfcClass  ;
+    skos:broader :IfcEnergyConversionDevice .
+
+:IfcEngine
+    a :IfcClass  ;
+    skos:broader :IfcEnergyConversionDevice .
+
+:IfcEvaporativeCooler
+    a :IfcClass  ;
+    skos:broader :IfcEnergyConversionDevice .
+
+:IfcEvaporator
+    a :IfcClass  ;
+    skos:broader :IfcEnergyConversionDevice .
+
+:IfcHeatExchanger
+    a :IfcClass  ;
+    skos:broader :IfcEnergyConversionDevice .
+
+:IfcHumidifier
+    a :IfcClass  ;
+    skos:broader :IfcEnergyConversionDevice .
+
+:IfcMotorConnection
+    a :IfcClass  ;
+    skos:broader :IfcEnergyConversionDevice .
+
+:IfcSolarDevice
+    a :IfcClass  ;
+    skos:broader :IfcEnergyConversionDevice .
+
+:IfcTransformer
+    a :IfcClass  ;
+    skos:broader :IfcEnergyConversionDevice .
+
+:IfcTubeBundle
+    a :IfcClass  ;
+    skos:broader :IfcEnergyConversionDevice .
+
+:IfcUnitaryEquipment
+    a :IfcClass  ;
+    skos:broader :IfcEnergyConversionDevice .
+
+:IfcFlowController
+    a :IfcClass  ;
+    skos:broader :IfcDistributionFlowElement .
+
+:IfcAirTerminalBox
+    a :IfcClass  ;
+    skos:broader :IfcFlowController .
+
+:IfcDamper
+    a :IfcClass  ;
+    skos:broader :IfcFlowController .
+
+:IfcDistributionBoard
+    a :IfcClass  ;
+    skos:broader :IfcFlowController .
+
+:IfcElectricDistributionBoard
+    a :IfcClass  ;
+    skos:broader :IfcFlowController .
+
+:IfcElectricTimeControl
+    a :IfcClass  ;
+    skos:broader :IfcFlowController .
+
+:IfcFlowMeter
+    a :IfcClass  ;
+    skos:broader :IfcFlowController .
+
+:IfcProtectiveDevice
+    a :IfcClass  ;
+    skos:broader :IfcFlowController .
+
+:IfcSwitchingDevice
+    a :IfcClass  ;
+    skos:broader :IfcFlowController .
+
+:IfcValve
+    a :IfcClass  ;
+    skos:broader :IfcFlowController .
+
+:IfcFlowFitting
+    a :IfcClass  ;
+    skos:broader :IfcDistributionFlowElement .
+
+:IfcCableCarrierFitting
+    a :IfcClass  ;
+    skos:broader :IfcFlowFitting .
+
+:IfcCableFitting
+    a :IfcClass  ;
+    skos:broader :IfcFlowFitting .
+
+:IfcDuctFitting
+    a :IfcClass  ;
+    skos:broader :IfcFlowFitting .
+
+:IfcJunctionBox
+    a :IfcClass  ;
+    skos:broader :IfcFlowFitting .
+
+:IfcPipeFitting
+    a :IfcClass  ;
+    skos:broader :IfcFlowFitting .
+
+:IfcFlowMovingDevice
+    a :IfcClass  ;
+    skos:broader :IfcDistributionFlowElement .
+
+:IfcCompressor
+    a :IfcClass  ;
+    skos:broader :IfcFlowMovingDevice .
+
+:IfcFan
+    a :IfcClass  ;
+    skos:broader :IfcFlowMovingDevice .
+
+:IfcPump
+    a :IfcClass  ;
+    skos:broader :IfcFlowMovingDevice .
+
+:IfcFlowSegment
+    a :IfcClass  ;
+    skos:broader :IfcDistributionFlowElement .
+
+:IfcCableCarrierSegment
+    a :IfcClass  ;
+    skos:broader :IfcFlowSegment .
+
+:IfcCableSegment
+    a :IfcClass  ;
+    skos:broader :IfcFlowSegment .
+
+:IfcConveyorSegment
+    a :IfcClass  ;
+    skos:broader :IfcFlowSegment .
+
+:IfcDuctSegment
+    a :IfcClass  ;
+    skos:broader :IfcFlowSegment .
+
+:IfcPipeSegment
+    a :IfcClass  ;
+    skos:broader :IfcFlowSegment .
+
+:IfcFlowStorageDevice
+    a :IfcClass  ;
+    skos:broader :IfcDistributionFlowElement .
+
+:IfcElectricFlowStorageDevice
+    a :IfcClass  ;
+    skos:broader :IfcFlowStorageDevice .
+
+:IfcTank
+    a :IfcClass  ;
+    skos:broader :IfcFlowStorageDevice .
+
+:IfcFlowTerminal
+    a :IfcClass  ;
+    skos:broader :IfcDistributionFlowElement .
+
+:IfcAirTerminal
+    a :IfcClass  ;
+    skos:broader :IfcFlowTerminal .
+
+:IfcAudioVisualAppliance
+    a :IfcClass  ;
+    skos:broader :IfcFlowTerminal .
+
+:IfcCommunicationsAppliance
+    a :IfcClass  ;
+    skos:broader :IfcFlowTerminal .
+
+:IfcElectricAppliance
+    a :IfcClass  ;
+    skos:broader :IfcFlowTerminal .
+
+:IfcFireSuppressionTerminal
+    a :IfcClass  ;
+    skos:broader :IfcFlowTerminal .
+
+:IfcLamp
+    a :IfcClass  ;
+    skos:broader :IfcFlowTerminal .
+
+:IfcLightFixture
+    a :IfcClass  ;
+    skos:broader :IfcFlowTerminal .
+
+:IfcLiquidTerminal
+    a :IfcClass  ;
+    skos:broader :IfcFlowTerminal .
+
+:IfcMedicalDevice
+    a :IfcClass  ;
+    skos:broader :IfcFlowTerminal .
+
+:IfcMobileTelecommunicationsAppliance
+    a :IfcClass  ;
+    skos:broader :IfcFlowTerminal .
+
+:IfcOutlet
+    a :IfcClass  ;
+    skos:broader :IfcFlowTerminal .
+
+:IfcSanitaryTerminal
+    a :IfcClass  ;
+    skos:broader :IfcFlowTerminal .
+
+:IfcSignal
+    a :IfcClass  ;
+    skos:broader :IfcFlowTerminal .
+
+:IfcSpaceHeater
+    a :IfcClass  ;
+    skos:broader :IfcFlowTerminal .
+
+:IfcStackTerminal
+    a :IfcClass  ;
+    skos:broader :IfcFlowTerminal .
+
+:IfcWasteTerminal
+    a :IfcClass  ;
+    skos:broader :IfcFlowTerminal .
+
+:IfcFlowTreatmentDevice
+    a :IfcClass  ;
+    skos:broader :IfcDistributionFlowElement .
+
+:IfcInterceptor
+    a :IfcClass  ;
+    skos:broader :IfcFlowTreatmentDevice .
+
+:IfcFilter
+    a :IfcClass  ;
+    skos:broader :IfcFlowTreatmentDevice .
+
+:IfcElectricFlowTreatmentDevice
+    a :IfcClass  ;
+    skos:broader :IfcFlowTreatmentDevice .
+
+:IfcDuctSilencer
+    a :IfcClass  ;
+    skos:broader :IfcFlowTreatmentDevice .
+
+:IfcElementAssembly
+    a :IfcClass  ;
+    skos:broader :IfcElement .
+
+:IfcElementComponent
+    a :IfcClass  ;
+    skos:broader :IfcElement .
+
+:IfcBuildingElementPart
+    a :IfcClass  ;
+    skos:broader :IfcElementComponent .
+
+:IfcDiscreteAccessory
+    a :IfcClass  ;
+    skos:broader :IfcElementComponent .
+
+:IfcFastener
+    a :IfcClass  ;
+    skos:broader :IfcElementComponent .
+
+:IfcImpactProtectionDevice
+    a :IfcClass  ;
+    skos:broader :IfcElementComponent .
+
+:IfcMechanicalFastener
+    a :IfcClass  ;
+    skos:broader :IfcElementComponent .
+
+:IfcReinforcingElement
+    a :IfcClass  ;
+    skos:broader :IfcElementComponent .
+
+:IfcReinforcingBar
+    a :IfcClass  ;
+    skos:broader :IfcReinforcingElement .
+
+:IfcReinforcingMesh
+    a :IfcClass  ;
+    skos:broader :IfcReinforcingElement .
+
+:IfcTendon
+    a :IfcClass  ;
+    skos:broader :IfcReinforcingElement .
+
+:IfcTendonAnchor
+    a :IfcClass  ;
+    skos:broader :IfcReinforcingElement .
+
+:IfcTendonConduit
+    a :IfcClass  ;
+    skos:broader :IfcReinforcingElement .
+
+:IfcSign
+    a :IfcClass  ;
+    skos:broader :IfcElementComponent .
+
+:IfcVibrationDamper
+    a :IfcClass  ;
+    skos:broader :IfcElementComponent .
+
+:IfcVibrationIsolator
+    a :IfcClass  ;
+    skos:broader :IfcElementComponent .
+
+:IfcFeatureElement
+    a :IfcClass  ;
+    skos:broader :IfcElement .
+
+:IfcFeatureElementAddition
+    a :IfcClass  ;
+    skos:broader :IfcFeatureElement .
+
+:IfcProjectionElement
+    a :IfcClass  ;
+    skos:broader :IfcFeatureElementAddition .
+
+:IfcFeatureElementSubtraction
+    a :IfcClass  ;
+    skos:broader :IfcFeatureElement .
+
+:IfcEarthworksCut
+    a :IfcClass  ;
+    skos:broader :IfcFeatureElementSubtraction .
+
+:IfcOpeningElement
+    a :IfcClass  ;
+    skos:broader :IfcFeatureElementSubtraction .
+
+:IfcOpeningElementStandardCase
+    a :IfcClass  ;
+    skos:broader :IfcOpeningElement .
+
+:IfcVoidingFeature
+    a :IfcClass  ;
+    skos:broader :IfcFeatureElementSubtraction .
+
+:IfcSurfaceFeature
+    a :IfcClass  ;
+    skos:broader :IfcFeatureElement .
+
+:IfcFurnishingElement
+    a :IfcClass  ;
+    skos:broader :IfcElement .
+
+:IfcSystemFurnitureElement
+    a :IfcClass  ;
+    skos:broader :IfcFurnishingElement .
+
+:IfcFurniture
+    a :IfcClass  ;
+    skos:broader :IfcFurnishingElement .
+
+:IfcGeographicElement
+    a :IfcClass  ;
+    skos:broader :IfcElement .
+
+:IfcPlant
+    a :IfcClass  ;
+    skos:broader :IfcGeographicElement .
+
+:IfcGeotechnicalElement
+    a :IfcClass  ;
+    skos:broader :IfcElement .
+
+:IfcGeotechnicalAssembly
+    a :IfcClass  ;
+    skos:broader :IfcGeotechnicalElement .
+
+:IfcBorehole
+    a :IfcClass  ;
+    skos:broader :IfcGeotechnicalAssembly .
+
+:IfcGeomodel
+    a :IfcClass  ;
+    skos:broader :IfcGeotechnicalAssembly .
+
+:IfcGeoslice
+    a :IfcClass  ;
+    skos:broader :IfcGeotechnicalAssembly .
+
+:IfcGeotechnicalStratum
+    a :IfcClass  ;
+    skos:broader :IfcGeotechnicalElement .
+
+:IfcSolidStratum
+    a :IfcClass  ;
+    skos:broader :IfcGeotechnicalStratum .
+
+:IfcVoidStratum
+    a :IfcClass  ;
+    skos:broader :IfcGeotechnicalStratum .
+
+:IfcWaterStratum
+    a :IfcClass  ;
+    skos:broader :IfcGeotechnicalStratum .
+
+:IfcTransportElement
+    a :IfcClass  ;
+    skos:broader :IfcElement .
+
+:IfcVirtualElement
+    a :IfcClass  ;
+    skos:broader :IfcElement .

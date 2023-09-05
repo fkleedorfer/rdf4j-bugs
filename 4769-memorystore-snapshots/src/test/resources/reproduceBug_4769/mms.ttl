@@ -1,0 +1,573 @@
+@prefix :             <https://mms.researchstudio.at/mms#> .
+@prefix rdf:          <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:          <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:         <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dtype:        <http://www.linkedmodel.org/schema/dtype#> .
+@prefix dc:           <http://purl.org/dc/elements/1.1/> .
+@prefix fno:          <https://w3id.org/function/ontology#> .
+@prefix xsd:          <http://www.w3.org/2001/XMLSchema#> .
+@prefix qudt:         <http://qudt.org/schema/qudt/> .
+@prefix dcterms:      <http://purl.org/dc/terms/> .
+@prefix vann:         <http://purl.org/vocab/vann/> .
+@prefix skos:         <http://www.w3.org/2004/02/skos/core#> .
+@prefix unit:         <http://qudt.org/vocab/unit/> .
+@prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
+@prefix mms-ifc:      <https://mms.researchstudio.at/mms-ifc#> .
+
+:
+    a                             owl:Ontology ;
+    owl:versionIRI                <https://mms.researchstudio.at/mms/1.0> ;
+    dc:creator                    "Florian Kleedorfer", "Gabriel Pickl" ;
+    dc:title                      "Merkmalservice Ontology"@en ;
+    dc:title                      "Merkmalservice Ontologie"@de ;
+    dcterms:created               "2020-09-21"^^xsd:date ;
+    dcterms:license               <https://creativecommons.org/licenses/by/4.0/> ;
+    vann:preferredNamespacePrefix "mms" .
+
+#################################################################
+#    Datatypes
+#################################################################
+:ifcexpression
+    rdf:type rdfs:Datatype ;
+    rdfs:subClassOf xsd:string .
+
+#################################################################
+#    Classes
+#################################################################
+
+:HistoryEntry
+    rdf:type owl:Class .
+
+:Organization
+    rdf:type owl:Class .
+
+:Project
+    rdf:type owl:Class .
+
+:Standard
+    rdf:type owl:Class, skos:ConceptScheme .
+
+:Mapping
+    rdf:type owl:Class .
+
+:Condition
+    rdf:type owl:Class .
+
+:SingleCondition
+    rdf:type owl:Class .
+
+:GroupCondition
+    rdf:type owl:Class .
+
+:ElementCondition
+    rdf:type owl:Class .
+
+:ChangeAction
+    rdfs:subClassOf :Action .
+
+:AddAction
+    rdfs:subClassOf :Action .
+
+:ConvertAction
+    rdfs:subClassOf :Action .
+
+:DeleteAction
+    rdfs:subClassOf :Action .
+
+:ExtractAction
+    rdfs:subClassOf :Action .
+
+###  https://mms.researchstudio.at/mms#Feature
+
+:Feature
+    rdf:type owl:Class .
+
+###  https://mms.researchstudio.at/mms#FeatureGroup
+
+:FeatureGroup
+    rdf:type owl:Class, skos:Concept .
+
+###  https://mms.researchstudio.at/mms#PropertySet
+
+:PropertySet
+    rdf:type owl:Class .
+
+
+:IriMap
+    a               owl:Class ;
+    rdfs:subClassOf :Map .
+
+:StringMap
+    a               owl:Class ;
+    rdfs:subClassOf :Map .
+
+###  https://mms.researchstudio.at/mms#DataType
+
+:DataType
+    rdf:type owl:Class .
+
+
+:belongsToOrganization
+    a           owl:ObjectProperty ;
+    rdfs:range  :Organization ;
+    rdfs:domain :Standard .
+
+:importedFromOrganization
+    a           owl:ObjectProperty ;
+    rdfs:range  :Organization ;
+    rdfs:domain :Standard .
+
+:belongsToProject
+    a           owl:ObjectProperty ;
+    rdfs:domain :Project ;
+    rdfs:range  :Standard .
+
+:relatedEntity
+    a           owl:ObjectProperty ;
+    rdfs:domain :HistoryEntry ;
+    rdfs:range  :Standard, :FeatureGroup, :Feature, :Mapping, :PropertySet, :Project, :Organization .
+
+:belongsToStandard
+    a                  owl:ObjectProperty ;
+    rdfs:subPropertyOf skos:inScheme ;
+    rdfs:range         :Standard ;
+    rdfs:domain        :Feature .
+
+:featureGroup
+    a           owl:ObjectProperty ;
+    rdfs:range  :FeatureGroup ;
+    rdfs:domain :Feature .
+
+:propertySet
+    a           owl:ObjectProperty ;
+    rdfs:range  :PropertySet ;
+    rdfs:domain :Feature.
+
+:quantityKind
+    a           owl:ObjectProperty ;
+    rdfs:range  qudt:QuantityKind ;
+    rdfs:domain :Feature .
+
+:unit
+    a           owl:ObjectProperty ;
+    rdfs:range  qudt:Unit ;
+    rdfs:domain :Feature .
+
+:allowMultiple
+    a           owl:DatatypeProperty ;
+    rdfs:domain :EnumerationType ;
+    rdfs:range  xsd:boolean .
+
+:dataType
+    a           owl:ObjectProperty ;
+    rdfs:range  :DataType ;
+    rdfs:domain :Feature .
+
+:lastModifiedBy
+    a           owl:DatatypeProperty ;
+    rdfs:domain [ owl:unionOf ( :Organization :Project :Standard :Feature :FeatureGroup :PropertySet ) ] ;
+    rdfs:range  xsd:dateTime .
+
+:externalId
+    a           owl:DatatypeProperty ;
+    rdfs:domain [ owl:unionOf ( :Organization :Project :Standard :Feature :FeatureGroup :PropertySet ) ] ;
+    rdfs:range  xsd:string .
+
+:reference
+    a               rdfs:Datatype ;
+    rdfs:subClassOf xsd:string .
+
+
+:mapEntry
+    a           owl:ObjectProperty ;
+    rdfs:domain :Map ;
+    rdfs:range  :MapEntry .
+
+:mapKey
+    a           rdf:Property ;
+    rdfs:domain :MapEntry .
+
+:mapValue
+    a           rdf:Property ;
+    rdfs:domain :MapEntry .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+### https://mms.researchstudio.at/mms#BooleanType
+
+:BooleanType
+    rdf:type :DataType ;
+    :readAs  :inputFeatureBoolean1 ;
+    :writeAs :outputFeatureBoolean1 .
+
+### https://mms.researchstudio.at/mms#StringType
+
+:StringType
+    rdf:type :DataType ;
+    :readAs  :inputFeatureString1 ;
+    :writeAs :outputFeatureString1 .
+
+### https://mms.researchstudio.at/mms#ReferenceType
+
+:ReferenceType
+    rdf:type :DataType ;
+    :readAs  :inputFeatureReference1 ;
+    :writeAs :outputFeatureReference1 .
+
+
+###  https://mms.researchstudio.at/mms#NumericType
+
+:NumericType
+    rdf:type        owl:Class ;
+    rdfs:subClassOf :DataType .
+
+
+###  https://mms.researchstudio.at/mms#EnumerationType
+
+:EnumerationType
+    rdf:type        owl:Class ;
+    rdfs:subClassOf :DataType .
+
+#################################################################
+#    Mapping Functions
+#
+#       Parameters/Outputs should be named as follows:
+#         - input_${type} : value of the input feature, which :dataType ${type}
+#         - output_${type}: value of the output feature, which :dataType ${type}
+#         - param${name}: some input parameter
+#         - output${name}: some output
+#
+#       Mapping functions MUST expect at least one input_${typeA} and return exactly one output_${typeB}
+#################################################################
+
+:readStringFeature
+    a              fno:Function ;
+    fno:name       "ReadStringFeature" ;
+    fno:expects    ( :paramStringFeature ) ;
+    fno:returns    ( :outputString ) ;
+    dc:description "Reads the value of the string feature and returns it."@en .
+
+:writeStringFeature
+    a              fno:Function ;
+    fno:name       "WriteStringFeature" ;
+    fno:expects    ( :paramStringFeature :paramString ) ;
+    dc:description "Writes the input string value to the specified string feature."@en .
+
+:readRefFeature
+    a              fno:Function ;
+    fno:name       "ReadRefFeature" ;
+    fno:expects    ( :paramRefFeature ) ;
+    fno:returns    ( :outputRef ) ;
+    dc:description "Reads the value of the reference feature and returns it."@en .
+
+:writeRefFeature
+    a              fno:Function ;
+    fno:name       "WriteRefFeature" ;
+    fno:expects    ( :paramRefFeature :paramRef ) ;
+    dc:description "Writes the input recerence value to the specified reference feature."@en .
+
+:readBoolFeature
+    a              fno:Function ;
+    fno:name       "ReadBoolFeature" ;
+    fno:expects    ( :paramBoolFeature ) ;
+    fno:returns    ( :outputBool ) ;
+    dc:description "Reads the value of the bool feature and returns it."@en .
+
+:writeBoolFeature
+    a              fno:Function ;
+    fno:name       "WriteBoolFeature" ;
+    fno:expects    ( :paramBoolFeature :paramBool ) ;
+    dc:description "Writes the input bool value to the specified bool feature."@en .
+
+:readEnumFeature
+    a              fno:Function ;
+    fno:name       "ReadEnumFeature" ;
+    fno:expects    ( :paramEnumFeature ) ;
+    fno:returns    ( :outputEnumId :outputEnumValue :outputEnumDescription ) ;
+    dc:description "Reads the value of the enum feature and returns its three components."@en .
+
+:writeEnumFeature
+    a              fno:Function ;
+    fno:name       "WriteEnumFeature" ;
+    fno:expects    ( :paramEnumFeature :paramId ) ;
+    dc:description "Writes the input value to the specified enum feature."@en .
+
+:readNumericFeature
+    a              fno:Function ;
+    fno:name       "ReadNumericFeature" ;
+    fno:expects    ( :paramNumericFeature ) ;
+    fno:returns    ( :outputDouble :outputQuantityKind :outputUnit ) ;
+    dc:description "Reads the value of the numeric feature and returns its three components."@en .
+
+:readNumericFeatureDefinition
+    a              fno:Function ;
+    fno:name       "ReadNumericFeatureDefinition" ;
+    fno:expects    ( :paramNumericFeature ) ;
+    fno:returns    ( :outputQuantityKind :outputUnit ) ;
+    dc:description "Reads the definition of the numeric feature and returns its quantity kind and unit components."@en .
+
+:writeNumericFeature
+    a              fno:Function ;
+    fno:name       "WriteNumericFeature" ;
+    fno:expects    ( :paramNumericFeature :paramDouble ) ;
+    dc:description "Writes the input value to the specified feature"@en .
+
+
+:paramStringFeature
+    a            fno:Parameter ;
+    fno:property :stringFeature ;
+    :rdfType     :Feature ;
+    :featureKind :StringType ;
+    fno:required true .
+
+:paramRefFeature
+    a            fno:Parameter ;
+    fno:property :refFeature ;
+    :rdfType     :Feature ;
+    :featureKind :ReferenceType ;
+    fno:required true .
+
+:paramBoolFeature
+    a            fno:Parameter ;
+    fno:property :boolFeature ;
+    :rdfType     :Feature ;
+    :featureKind :BooleanType ;
+    fno:required true .
+
+:paramEnumFeature
+    a            fno:Parameter ;
+    fno:property :enumFeature ;
+    :rdfType     :Feature ;
+    :featureKind :EnumerationType ;
+    fno:required true .
+
+:paramNumericFeature
+    a            fno:Parameter ;
+    fno:property :numericFeature ;
+    :rdfType     :Feature ;
+    :featureKind :NumericType ;
+    fno:required true .
+
+:paramString
+    a                    fno:Parameter ;
+    fno:type             xsd:string ;
+    fno:name             "String Input" ;
+    fno:property         :inputString ;
+    :valueSourceProperty :stringSource ;
+    fno:required         true ;
+    dc:description       "String input of a function"@en .
+
+:paramRef
+    a                    fno:Parameter ;
+    fno:type             xsd:string ;
+    fno:name             "Referece Input" ;
+    fno:property         :inputRef ;
+    :valueSourceProperty :refSource ;
+    fno:required         true ;
+    dc:description       "Reference input of a function"@en .
+
+:paramBool
+    a                    fno:Parameter ;
+    fno:type             xsd:boolean ;
+    fno:name             "Boolean Input" ;
+    fno:property         :inputBool ;
+    :valueSourceProperty :boolSource ;
+    fno:required         true ;
+    dc:description       "Bool input of a function"@en .
+
+:outputString
+    a                  fno:Output ;
+    fno:type           xsd:string ;
+    fno:name           "String Output" ;
+    fno:property       :resultString ;
+    :valueSinkProperty :stringSink ;
+    fno:required       true ;
+    dc:description     "String output of a function"@en .
+
+:outputRef
+    a                  fno:Output ;
+    fno:type           xsd:string ;
+    fno:name           "Reference Output" ;
+    fno:property       :resultRef ;
+    :valueSinkProperty :refSink ;
+    fno:required       true ;
+    dc:description     "Reference output of a function"@en .
+
+:outputBool
+    a                  fno:Output ;
+    fno:type           xsd:boolean ;
+    fno:name           "Boolean Output" ;
+    fno:property       :resultBool ;
+    :valueSinkProperty :boolSink ;
+    fno:required       true ;
+    dc:description     "Bool output of a function"@en .
+
+:paramValue
+    a                    fno:Parameter ;
+    fno:name             "The input value" ;
+    fno:property         :inputValue ;
+    :valueSourceProperty :valueSource ;
+    fno:required         true ;
+    dc:description       "The input value of a function (any datatype)"@en .
+
+:paramId
+    a                    fno:Parameter ;
+    fno:name             "The input id" ;
+    fno:property         :inputId ;
+    :valueSourceProperty :idSource ;
+    fno:required         true ;
+    dc:description       "The input id of a function (any datatype)"@en .
+
+:outputValue
+    a                  fno:Output ;
+    fno:name           "The output value" ;
+    fno:property       :resultValue ;
+    :valueSinkProperty :valueSink ;
+    fno:required       true ;
+    dc:description     "The output value of a function (any datatype)"@en .
+
+:outputId
+    a                  fno:Output ;
+    fno:name           "The output id" ;
+    fno:property       :resultId ;
+    :valueSinkProperty :idSink ;
+    fno:required       true ;
+    dc:description     "The output id of a function (any datatype)"@en .
+
+:outputEnumDescription
+    a                  fno:Output ;
+    fno:type           xsd:string ;
+    fno:name           "The enum's description" ;
+    fno:property       :enumDescription ;
+    :valueSinkProperty :enumDescriptionSink ;
+    fno:required       true ;
+    dc:description     "The description of the enum"@en .
+
+:outputEnumId
+    a                  fno:Output ;
+    fno:name           "The enum's id" ;
+    fno:property       :enumId ;
+    :valueSinkProperty :enumIdSink ;
+    fno:required       true ;
+    dc:description     "The id of the enum  (any datatype)"@en .
+
+:outputEnumValue
+    a                  fno:Output ;
+    fno:name           "The enum's value" ;
+    fno:property       :enumValue ;
+    :valueSinkProperty :enumValueSink ;
+    fno:required       true ;
+    dc:description     "The value of the enum (any datatype)"@en .
+
+:outputUnit
+    a                  fno:Output ;
+    :rdfType           qudt:Unit ;
+    fno:name           "Unit"@en ;
+    fno:property       :unit ;
+    :valueSinkProperty :unitSink ;
+    fno:required       true ;
+    dc:description     "The unit that is used for the feature"@en .
+
+:outputQuantityKind
+    a                  fno:Output ;
+    fno:name           "QantityKind" ;
+    fno:property       :quantityKind ;
+    :valueSinkProperty :quantityKindSink ;
+    fno:required       true ;
+    dc:description     "The quantity kind that is used for the feature"@en .
+
+:paramDouble
+    a                    fno:Parameter ;
+    fno:type             xsd:double ;
+    fno:name             "Double Input" ;
+    fno:property         :inputDouble ;
+    :valueSourceProperty :doubleSource ;
+    fno:required         true ;
+    dc:description       "Double (double precision decimal) input of a function"@en .
+
+:outputDouble
+    a                  fno:Output ;
+    fno:name           "Double output " ;
+    fno:property       :resultDouble ;
+    :valueSinkProperty :doubleSink ;
+    fno:required       true ;
+    dc:description     "The output value of a function (double precision decimal)"@en .
+
+:mapExplicitly
+    a           fno:Function ;
+    fno:name    "value - value mapping" ;
+    fno:expects ( :paramId :paramMap ) ;
+    fno:returns ( :outputId ) ;
+    dc:description
+                "If the input is a key in the specified Map, the associated value is copied to the output, otherwise the input value is returned"@en .
+
+:paramMap
+    a                    fno:Parameter ;
+    fno:name             "Map" ;
+    :rdfType             :Map ;
+    fno:required         true ;
+    fno:property         :inputMap ;
+    :valueSourceProperty :inputMapSource ;
+    dc:description       "A value - value mapping as an input to a function (no type restrictions on the values)"@en .
+
+:regexReplace
+    a              fno:Function ;
+    fno:name       "regex replace"@en ;
+    fno:expects    ( :paramString :paramRegex :paramReplacement ) ;
+    fno:returns    ( :outputString ) ;
+    dc:description "Applies the regular expression replacement on the input string and returns the result"@en .
+
+:paramRegex
+    a                    fno:Parameter ;
+    fno:name             "regular expression"@en ;
+    fno:type             xsd:string ;
+    fno:required         true ;
+    fno:property         :regex ;
+    :valueSourceProperty :regexSource .
+
+:paramReplacement
+    a                    fno:Parameter ;
+    fno:name             "replacement expression"@en ;
+    fno:type             xsd:string ;
+    fno:required         true ;
+    fno:property         :replacement ;
+    :valueSourceProperty :replacementSource .
+
+:convertUnits
+    a              fno:Function ;
+    fno:name       "unit conversion"@en ;
+    fno:expects    ( :paramDouble :paramUnit :paramTargetUnit ) ;
+    fno:returns    ( :outputDouble ) ;
+    dc:description "Applies the regular expression replacement on the input string and returns the result"@en .
+
+:paramUnit
+    a                    fno:Parameter ;
+    fno:name             "QUDT unit" ;
+    fno:property         :inputUnit ;
+    :valueSourceProperty :unitSource ;
+    :rdfType             qudt:Unit ;
+    fno:required         true .
+
+:paramTargetUnit
+    a                    fno:Parameter ;
+    fno:name             "QUDT target unit" ;
+    fno:property         :targetUnit ;
+    :valueSourceProperty :targetUnitSource ;
+    :rdfType             qudt:Unit ;
+    fno:required         true .
+
+:paramQuantityKind
+    a                    fno:Parameter ;
+    fno:name             "QUDT quantity kind" ;
+    fno:property         :inputQuantityKind ;
+    :valueSourceProperty :quantityKindSource ;
+    :rdfType             qudt:QuantityKind ;
+    fno:required         true .
+
+:usedInElementClass
+    a           owl:ObjectProperty ;
+    rdfs:range  mms-ifc:IfcBuiltElement ;
+    rdfs:domain :PropertySet .
