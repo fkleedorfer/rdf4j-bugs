@@ -29,11 +29,11 @@ public class BugReproducingTests {
         importData(con, "reproduceBug_4769/mms-ifc.ttl", factory.createIRI("https://mms.researchstudio.at/mms#IfcDataGraph"));
         importData(con, "reproduceBug_4769/qudt-quantitykind.ttl", factory.createIRI("https://mms.researchstudio.at/mms/QudtDataGraph"));
         importData(con, "reproduceBug_4769/qudt-unit.ttl",factory.createIRI("https://mms.researchstudio.at/mms/QudtDataGraph"));
+        String query = loadQuery();
         for(int i = 0; i < 100; i++) {
             clearDefaultGraph(con);
             importData(con, "reproduceBug_4769/background.ttl", null);
             con.commit();
-            String query = loadQuery();
             TupleQuery prearedQuery = con.prepareTupleQuery(query);
             try (TupleQueryResult result = prearedQuery.evaluate()) {
                 long resultCount = result.stream().count();
